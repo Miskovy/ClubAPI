@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/', verifyToken, isAdmin, adminCtrl.getAllAdmins);
 router.get('/:id', verifyToken, isAdmin, adminCtrl.getAdminById);
-router.post('/', verifyToken, isAdmin, adminCtrl.createAdmin);
+router.post('/', adminCtrl.createAdmin);//verifyToken, isAdmin
 router.put('/:id', verifyToken, isAdmin, adminCtrl.updateAdmin);
 router.delete('/:id', verifyToken, isAdmin, adminCtrl.deleteAdmin);
 

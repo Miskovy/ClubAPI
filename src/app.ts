@@ -6,6 +6,7 @@ import rateLimit from "express-rate-limit";
 import { json, urlencoded } from "express";
 // import router from "./routes/router";
 import adminRouter from "./routes/admins.js";
+import authRouter from "./routes/auth.js";
 const app = express();
 
 
@@ -16,6 +17,7 @@ app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.use('/api/admins', adminRouter);
+app.use('/api/auth', authRouter);
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,

@@ -15,11 +15,11 @@ export const users = mysqlTable('users', {
     hashed_password: varchar('hashed_password', { length: 255 }).notNull(),
     fcmtoken: varchar('fcmtoken', { length: 255 }),
     created_at: timestamp('created_at').defaultNow(),
-    updated_at: timestamp('updated_at').defaultNow().onUpdateNow()
-}, (t) => ({
-    emailUnique: unique('users_email_unique').on(t.email),
+    updated_at: timestamp('updated_at').defaultNow().onUpdateNow(),
     isVerified: boolean('is_verified').notNull().default(false),
     rejection_reason: text('rejection_reason'),
-    start_membership_date: date('start_membership_date').notNull(),
-    end_membership_date: date('end_membership_date').notNull()
+    start_membership_date: date('start_membership_date'),
+    end_membership_date: date('end_membership_date')
+}, (t) => ({
+    emailUnique: unique('users_email_unique').on(t.email)
 }));

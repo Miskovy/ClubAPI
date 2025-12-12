@@ -17,6 +17,6 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 
 export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
     const user = (req as any).user;
-    if (!user || user.role !== 'admin') return res.status(403).json({ message: 'Forbidden' });
+    if (!user || user.role !== 'admin') return res.status(403).json({ message: 'Access Forbidden , Must be an Admin' });
     next();
 };
